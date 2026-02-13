@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="En generator för samtalsöppnare och följdfrågor vid mingel och sociala sammanhang">
+    <title>Mingel-generator - Samtalsöppnare och följdfrågor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Språkväxlare och mörkt läge -->
+        <div class="controls-switcher">
+            <button
+                id="dark-mode-toggle"
+                class="control-btn"
+                type="button"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode">
+                <span class="dark-mode-icon">🌙</span>
+            </button>
+            <div class="language-switcher">
+                <button
+                    id="lang-sv"
+                    class="lang-btn active"
+                    type="button"
+                    aria-label="Byt till svenska">
+                    🇸🇪 SV
+                </button>
+                <button
+                    id="lang-en"
+                    class="lang-btn"
+                    type="button"
+                    aria-label="Switch to English">
+                    🇬🇧 EN
+                </button>
+            </div>
+        </div>
+
+        <h1 id="main-title">🎉 Mingel-generator</h1>
+        <p id="beskrivning" class="beskrivning">Behöver du en bra inledningsfras? Klicka på knappen!</p>
+
+        <!-- Kategoriväljare -->
+        <div class="category-selector" role="tablist" aria-label="Välj kategori">
+            <button
+                id="cat-all"
+                class="category-btn active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="fras-panel">
+                <span id="cat-all-text">Alla</span>
+            </button>
+            <button
+                id="cat-casual"
+                class="category-btn"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="fras-panel">
+                <span id="cat-casual-text">Casual</span>
+            </button>
+            <button
+                id="cat-professional"
+                class="category-btn"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="fras-panel">
+                <span id="cat-professional-text">Professionell</span>
+            </button>
+            <button
+                id="cat-fun"
+                class="category-btn"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="fras-panel">
+                <span id="cat-fun-text">Rolig</span>
+            </button>
+            <button
+                id="cat-deep"
+                class="category-btn"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="fras-panel">
+                <span id="cat-deep-text">Djup</span>
+            </button>
+        </div>
+
+        <!-- Sektion för inledningsfras -->
+        <section id="fras-panel" aria-labelledby="inledningsfras-rubrik" role="tabpanel">
+            <h2 id="inledningsfras-rubrik" class="visually-hidden">Inledningsfras</h2>
+            <div class="fras-box" role="region" aria-live="polite" aria-atomic="true">
+                <p id="fras">Klicka på knappen för att få en samtalsöppnare!</p>
+            </div>
+            <button
+                id="ny-fras-knapp"
+                type="button"
+                aria-label="Generera en ny inledningsfras för samtalet">
+                <span id="btn-text-1">Ge mig en fras!</span>
+            </button>
+        </section>
+
+        <!-- Sektion för följdfrågor (dold från början) -->
+        <section
+            id="foljdfragor-sektion"
+            class="foljdfragor-sektion"
+            aria-labelledby="foljdfragor-rubrik"
+            hidden>
+            <h2 id="foljdfragor-rubrik">💬 <span id="follow-up-title">Följdfråga</span></h2>
+            <div class="fras-box" role="region" aria-live="polite" aria-atomic="true">
+                <p id="foljdfraga">Här kommer en följdfråga!</p>
+            </div>
+            <button
+                id="ny-foljdfraga-knapp"
+                type="button"
+                aria-label="Generera en ny följdfråga baserad på inledningsfrasen">
+                <span id="btn-text-2">Ge mig en följdfråga!</span>
+            </button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
