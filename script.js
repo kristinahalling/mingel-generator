@@ -1,7 +1,7 @@
 // Datastruktur med innehåll på olika språk och kategorier
 const translations = {
     sv: {
-        title: "🎉 Mingel-generator",
+        title: "Mingel-generator",
         description: "Behöver du en bra inledningsfras? Klicka på knappen!",
         initialText: "Klicka på knappen för att få en samtalsöppnare!",
         followUpTitle: "Följdfråga",
@@ -162,7 +162,7 @@ const translations = {
         }
     },
     en: {
-        title: "🎉 Conversation Starter",
+        title: "Conversation Starter",
         description: "Need a great opening line? Click the button!",
         initialText: "Click the button to get a conversation starter!",
         followUpTitle: "Follow-up Question",
@@ -500,11 +500,11 @@ function toggleDarkMode() {
 
     if (darkMode) {
         document.body.classList.add('dark-mode');
-        darkModeIcon.textContent = '☀️';
+        darkModeIcon.textContent = '○';
         localStorage.setItem('darkMode', 'enabled');
     } else {
         document.body.classList.remove('dark-mode');
-        darkModeIcon.textContent = '🌙';
+        darkModeIcon.textContent = '●';
         localStorage.setItem('darkMode', 'disabled');
     }
 }

@@ -37,12 +37,12 @@ body.dark-mode .container {
         inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-body.dark-mode h1,
+body.dark-mode h1 {
+    color: rgba(226, 232, 240, 0.95);
+}
+
 body.dark-mode h2 {
-    background: linear-gradient(135deg, #a8c0ff 0%, #c2e9fb 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: rgba(203, 213, 225, 0.9);
 }
 
 body.dark-mode .beskrivning {
@@ -57,12 +57,6 @@ body.dark-mode .fras-box {
         inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-body.dark-mode .fras-box::before {
-    background: linear-gradient(135deg, rgba(168, 192, 255, 0.2), rgba(194, 233, 251, 0.2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
 
 body.dark-mode #fras,
 body.dark-mode #foljdfraga {
@@ -84,7 +78,12 @@ body.dark-mode .control-btn:hover {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-body.dark-mode .category-btn.active,
+body.dark-mode .category-btn.active {
+    background: rgba(45, 45, 60, 0.9);
+    color: rgba(168, 192, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 body.dark-mode .lang-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -95,7 +94,7 @@ body.dark-mode .foljdfragor-sektion {
 }
 
 body.dark-mode .foljdfragor-sektion::before {
-    background: linear-gradient(135deg, #a8c0ff, #c2e9fb);
+    background: rgba(168, 192, 255, 0.6);
     box-shadow: 0 0 0 4px rgba(30, 30, 46, 0.6);
 }
 
@@ -193,45 +192,45 @@ body::after {
     }
 }
 
-/* Kategoriväljare */
+/* Kategoriväljare - Clean tabs design */
 .category-selector {
     display: flex;
-    gap: 10px;
+    gap: 0;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(31, 38, 135, 0.08);
 }
 
 .category-btn {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: rgba(71, 85, 105, 0.9);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    padding: 10px 24px;
-    font-size: 0.9375rem;
-    border-radius: 20px;
+    background: transparent;
+    color: rgba(71, 85, 105, 0.8);
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
     font-weight: 600;
     min-height: auto;
     min-width: auto;
-    box-shadow: 0 2px 8px rgba(31, 38, 135, 0.1);
+    letter-spacing: 0.02em;
 }
 
 .category-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(31, 38, 135, 0.15);
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(71, 85, 105, 1);
 }
 
 .category-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .category-btn.active::before {
@@ -240,8 +239,7 @@ body::after {
 
 .category-btn:focus-visible {
     outline: none;
-    border-color: rgba(102, 126, 234, 0.6);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
 }
 
 /* Kontroller (dark mode + språk) */
@@ -277,7 +275,7 @@ body::after {
 .control-btn:hover {
     background: rgba(255, 255, 255, 0.4);
     border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px) rotate(20deg);
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(31, 38, 135, 0.15);
 }
 
@@ -338,31 +336,24 @@ body::after {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
-/* Rubriker - Modern gradient text */
+/* Rubriker - Clean minimal text */
 h1 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     margin-top: 10px;
-    margin-bottom: 16px;
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 20px rgba(102, 126, 234, 0.2);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: rgba(30, 41, 59, 0.9);
 }
 
 h2 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 1.75rem;
+    color: rgba(30, 41, 59, 0.8);
+    font-size: 1.5rem;
     margin-bottom: 24px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 /* Beskrivningstext */
@@ -401,20 +392,6 @@ h2 {
         inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 }
 
-.fras-box::before {
-    content: '"';
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    font-family: 'Inter', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(246, 147, 251, 0.15));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-}
 
 #fras {
     font-size: 1.375rem;
