@@ -605,11 +605,13 @@ function toggleDarkMode() {
 
     if (darkMode) {
         document.body.classList.add('dark-mode');
-        darkModeIcon.textContent = '○';
+        darkModeIcon.textContent = '☀️';
+        darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
         localStorage.setItem('darkMode', 'enabled');
     } else {
         document.body.classList.remove('dark-mode');
-        darkModeIcon.textContent = '●';
+        darkModeIcon.textContent = '🌙';
+        darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
         localStorage.setItem('darkMode', 'disabled');
     }
 }
