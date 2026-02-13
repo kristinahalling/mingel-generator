@@ -41,7 +41,7 @@ const translations = {
                         "Vad handlade den om?",
                         "Vad fick dig att välja just den boken?",
                         "Vilken genre föredrar du?",
-                        "Har du någon favorit­författare?"
+                        "Har du någon favoritförfattare?"
                     ]
                 },
                 {
@@ -79,7 +79,7 @@ const translations = {
                         "Hur hörde du talas om detta?",
                         "Vad hoppas du få ut av det?",
                         "Är detta något du gör ofta?",
-                        "Har du träffat någon intressant än?"
+                        "Har du träffat någon intressant ännu?"
                     ]
                 },
                 {
