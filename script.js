@@ -54,7 +54,7 @@ const translations = {
                     ]
                 },
                 {
-                    fras: "Vad skulle din drömhelg se ut?",
+                    fras: "Hur skulle din drömhelg se ut?",
                     foljdfragor: [
                         "Var skulle du vara?",
                         "Vem skulle du vilja ha med dig?",
