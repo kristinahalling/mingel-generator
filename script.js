@@ -1,7 +1,7 @@
 // Datastruktur med innehåll på olika språk och kategorier
 const translations = {
     sv: {
-        title: "Mingel-generator",
+        title: "Mingelgenerator",
         description: "Behöver du en bra inledningsfras? Klicka på knappen!",
         initialText: "Klicka på knappen för att få en samtalsöppnare!",
         followUpTitle: "Följdfråga",
