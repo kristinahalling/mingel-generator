@@ -89,6 +89,23 @@
             </button>
         </div>
 
+        <!-- Historik knapp -->
+        <button id="history-toggle" class="history-toggle-btn" type="button" aria-label="Toggle history">
+            <span id="history-toggle-text">Historik</span>
+            <span class="history-count" id="history-count">0</span>
+        </button>
+
+        <!-- Historik panel (dold från början) -->
+        <div id="history-panel" class="history-panel" hidden>
+            <div class="history-header">
+                <h3 id="history-title">Tidigare fraser</h3>
+                <button id="clear-history" class="clear-history-btn" type="button">Rensa</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <p class="history-empty" id="history-empty-msg">Ingen historik än. Generera en fras för att börja!</p>
+            </div>
+        </div>
+
         <!-- Sektion för inledningsfras -->
         <section id="fras-panel" aria-labelledby="inledningsfras-rubrik" role="tabpanel">
             <h2 id="inledningsfras-rubrik" class="visually-hidden">Inledningsfras</h2>

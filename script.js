@@ -329,6 +329,7 @@ let currentLang = 'sv';
 let currentCategory = 'all';
 let darkMode = false;
 let nuvarandeVal = null;
+let history = [];
 
 // Hämta element från HTML
 const htmlElement = document.documentElement;
@@ -346,6 +347,14 @@ const langSvBtn = document.getElementById('lang-sv');
 const langEnBtn = document.getElementById('lang-en');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 const darkModeIcon = document.querySelector('.dark-mode-icon');
+const historyToggleBtn = document.getElementById('history-toggle');
+const historyPanel = document.getElementById('history-panel');
+const historyList = document.getElementById('history-list');
+const historyCount = document.getElementById('history-count');
+const clearHistoryBtn = document.getElementById('clear-history');
+const historyEmptyMsg = document.getElementById('history-empty-msg');
+const historyTitle = document.getElementById('history-title');
+const historyToggleText = document.getElementById('history-toggle-text');
 
 // Kategoriknappar
 const categoryButtons = {
@@ -380,9 +389,18 @@ function updateUIText() {
         categoryTexts[key].textContent = t.categories[key];
     });
 
+    // Uppdatera historiktexter
+    historyToggleText.textContent = currentLang === 'sv' ? 'Historik' : 'History';
+    historyTitle.textContent = currentLang === 'sv' ? 'Tidigare fraser' : 'Previous phrases';
+    clearHistoryBtn.textContent = currentLang === 'sv' ? 'Rensa' : 'Clear';
+    historyEmptyMsg.textContent = currentLang === 'sv'
+        ? 'Ingen historik än. Generera en fras för att börja!'
+        : 'No history yet. Generate a phrase to start!';
+
     // Återställ nuvarande val när språk ändras
     nuvarandeVal = null;
     foljdfragorSektion.setAttribute('hidden', '');
+    renderHistory();
 }
 
 // Funktion för att få alla fraser från vald kategori
@@ -415,11 +433,98 @@ function visaSlumpmassigFras() {
     // Visa frasen
     frasElement.textContent = nuvarandeVal.fras;
 
+    // Lägg till i historik
+    addToHistory(nuvarandeVal.fras);
+
     // Återställ följdfrågetexten
     foljdfragaElement.textContent = t.followUpInitial;
 
     // Visa följdfrågor-sektionen
     foljdfragorSektion.removeAttribute('hidden');
+}
+
+// Lägg till fras i historik
+function addToHistory(fras) {
+    // Lägg till i början av arrayen
+    history.unshift(fras);
+
+    // Behåll max 20 fraser
+    if (history.length > 20) {
+        history = history.slice(0, 20);
+    }
+
+    // Spara i localStorage
+    localStorage.setItem('phraseHistory', JSON.stringify(history));
+
+    // Uppdatera UI
+    updateHistoryCount();
+    renderHistory();
+}
+
+// Uppdatera historikräknaren
+function updateHistoryCount() {
+    historyCount.textContent = history.length;
+}
+
+// Rendera historiklistan
+function renderHistory() {
+    if (history.length === 0) {
+        historyEmptyMsg.style.display = 'block';
+        historyList.querySelectorAll('.history-item').forEach(item => item.remove());
+        return;
+    }
+
+    historyEmptyMsg.style.display = 'none';
+    historyList.innerHTML = '';
+
+    history.forEach((fras, index) => {
+        const item = document.createElement('button');
+        item.className = 'history-item';
+        item.textContent = fras;
+        item.onclick = () => loadFromHistory(fras);
+        historyList.appendChild(item);
+    });
+}
+
+// Ladda fras från historik
+function loadFromHistory(fras) {
+    // Hitta frasen i alla kategorier
+    const t = translations[currentLang];
+    let foundStarter = null;
+
+    Object.keys(t.starters).forEach(category => {
+        const starter = t.starters[category].find(s => s.fras === fras);
+        if (starter) {
+            foundStarter = starter;
+        }
+    });
+
+    if (foundStarter) {
+        nuvarandeVal = foundStarter;
+        frasElement.textContent = foundStarter.fras;
+        foljdfragaElement.textContent = translations[currentLang].followUpInitial;
+        foljdfragorSektion.removeAttribute('hidden');
+
+        // Stäng historikpanelen
+        historyPanel.setAttribute('hidden', '');
+    }
+}
+
+// Toggle historikpanel
+function toggleHistory() {
+    if (historyPanel.hasAttribute('hidden')) {
+        historyPanel.removeAttribute('hidden');
+    } else {
+        historyPanel.setAttribute('hidden', '');
+    }
+}
+
+// Rensa historik
+function clearHistory() {
+    history = [];
+    localStorage.removeItem('phraseHistory');
+    updateHistoryCount();
+    renderHistory();
 }
 
 // Funktion som väljer en slumpmässig följdfråga
@@ -512,8 +617,20 @@ function toggleDarkMode() {
 // Event listener för mörkt läge
 darkModeToggle.addEventListener('click', toggleDarkMode);
 
+// Event listeners för historik
+historyToggleBtn.addEventListener('click', toggleHistory);
+clearHistoryBtn.addEventListener('click', clearHistory);
+
 // Initiera med svenska
 updateUIText();
+
+// Ladda historik från localStorage
+const savedHistory = localStorage.getItem('phraseHistory');
+if (savedHistory) {
+    history = JSON.parse(savedHistory);
+    updateHistoryCount();
+    renderHistory();
+}
 
 // Kontrollera om användaren föredrar mörkt läge
 const savedDarkMode = localStorage.getItem('darkMode');
