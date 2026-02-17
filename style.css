@@ -367,25 +367,32 @@ h2 {
     line-height: 1.7;
 }
 
-/* Boxen där frasen visas - Dark gray card */
+/* Boxen där frasen visas - Dark gray card med tydligare ram */
 .fras-box {
     background: #334155;
     padding: 40px 35px;
     border-radius: 24px;
     margin: 35px 0;
-    min-height: 120px;
+    min-height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.2);
-    border: 1px solid rgba(51, 65, 85, 0.5);
+    box-shadow:
+        0 4px 20px rgba(15, 23, 42, 0.3),
+        0 2px 8px rgba(15, 23, 42, 0.2),
+        inset 0 0 0 2px rgba(148, 163, 184, 0.2);
+    border: 3px solid rgba(148, 163, 184, 0.4);
     position: relative;
     transition: all 0.3s ease;
 }
 
 .fras-box:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+    box-shadow:
+        0 8px 28px rgba(15, 23, 42, 0.35),
+        0 4px 12px rgba(15, 23, 42, 0.25),
+        inset 0 0 0 2px rgba(148, 163, 184, 0.3);
+    border-color: rgba(148, 163, 184, 0.5);
 }
 
 
@@ -400,14 +407,14 @@ h2 {
     z-index: 1;
 }
 
-/* Knappen - Neutral button */
+/* Knappen - Grön knapp som är mindre än frasrutan */
 button {
-    background: #334155;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
-    border: 2px solid transparent;
-    padding: 16px 48px;
-    font-size: 1.125rem;
-    border-radius: 16px;
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    padding: 14px 36px;
+    font-size: 1rem;
+    border-radius: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
@@ -416,7 +423,8 @@ button {
     position: relative;
     overflow: hidden;
     letter-spacing: 0.025em;
-    box-shadow: 0 4px 12px rgba(51, 65, 85, 0.2);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    max-width: 300px;
 }
 
 /* Shimmer effekt */
@@ -437,30 +445,31 @@ button:hover::before {
 
 button:hover {
     transform: translateY(-2px);
-    background: #475569;
-    box-shadow: 0 8px 20px rgba(51, 65, 85, 0.3);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 8px 22px rgba(16, 185, 129, 0.4);
+    border-color: rgba(16, 185, 129, 0.5);
 }
 
 button:focus {
     outline: none;
     box-shadow:
-        0 0 0 3px rgba(148, 163, 184, 0.3),
-        0 4px 12px rgba(51, 65, 85, 0.2);
+        0 0 0 3px rgba(16, 185, 129, 0.3),
+        0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
 button:focus:not(:focus-visible) {
-    box-shadow: 0 4px 12px rgba(51, 65, 85, 0.2);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
 button:focus-visible {
     box-shadow:
-        0 0 0 3px rgba(148, 163, 184, 0.3),
-        0 4px 12px rgba(51, 65, 85, 0.2);
+        0 0 0 3px rgba(16, 185, 129, 0.3),
+        0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
 button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(51, 65, 85, 0.2);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 /* Stöd för användare som föredrar mindre rörelse */
@@ -578,14 +587,16 @@ button:active {
         padding: 12px 28px;
         font-size: 0.9375rem;
         width: 100%;
+        max-width: 100%;
         min-height: 44px;
     }
 
     .fras-box {
         padding: 20px 16px;
-        min-height: 80px;
+        min-height: 100px;
         margin: 20px 0;
         border-radius: 16px;
+        border-width: 2px;
     }
 
     #fras, #foljdfraga {
@@ -647,8 +658,9 @@ button:active {
 
     .fras-box {
         padding: 16px 12px;
-        min-height: 70px;
+        min-height: 90px;
         margin: 16px 0;
+        border-width: 2px;
     }
 
     #fras, #foljdfraga {
